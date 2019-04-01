@@ -1,13 +1,12 @@
 package page;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class SearchPage {
     WebDriver driver;
@@ -17,6 +16,9 @@ public class SearchPage {
 
     @FindBy(xpath = "//div[@id='resultStats']")
     private WebElement resultsTotall;
+
+    @FindBy(xpath = "//a[@aria-label='Page 2']")
+    private WebElement page2Button;
 
     public SearchPage(WebDriver driver) {
         this.driver = driver;
@@ -29,10 +31,9 @@ public class SearchPage {
                 && driver.getTitle().contains("Google");
     }
 
-    public int getSearchResulCount() {
+    public int getSearchResultCount() {
         return searchResultElements.size();
     }
-
 
     public List<String> getSearchResultLists() {
         List<String> searchResultsList = new ArrayList<String>();
@@ -41,6 +42,12 @@ public class SearchPage {
             searchResultsList.add(searchResultElement.getText());
         }
         return searchResultsList;
+    }
 
+    public void clickOnPage2Button(){
+        page2Button.sendKeys (Keys.ENTER);
     }
 }
+
+
+

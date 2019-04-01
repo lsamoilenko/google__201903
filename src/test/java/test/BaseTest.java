@@ -28,10 +28,10 @@ import page.StartPage;
         /**
          * Method for closing Chrome Browser after finishing test execution
          */
-        @AfterMethod
+        /*@AfterMethod
         public void afterMethod() {
             driver.quit();
-        }
+        }*/
 
     }
 
